@@ -1298,11 +1298,11 @@ export class TelegramClient extends TelegramBaseClient {
      * @example
      * ```ts
      * const me = await client.getEntity("me");
-     * console.log("My name is",utils.getDisplayName(me));
+     * console.log("My name is", utils.getDisplayName(me));
      *
      * const chat = await client.getInputEntity("username");
-     * for await (const message of client.iterMessages(chat){
-     *     console.log("Message text is",message.text);
+     * for await (const message of client.iterMessages(chat)) {
+     *     console.log("Message text is", message.text);
      * }
      *
      * // Note that you could have used the username directly, but it's
@@ -1416,6 +1416,7 @@ export class TelegramClient extends TelegramBaseClient {
                 client: this,
                 securityChecks: this._securityChecks,
                 autoReconnectCallback: this._handleReconnect.bind(this),
+                _exportedSenderPromises: this._exportedSenderPromises,
             });
         }
 
