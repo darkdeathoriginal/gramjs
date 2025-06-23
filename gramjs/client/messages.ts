@@ -1,4 +1,6 @@
-import { Api } from "../tl";
+import bigInt from "big-integer";
+import type { TelegramClient } from "../";
+import { utils } from "../";
 import type {
     DateLike,
     EntityLike,
@@ -7,22 +9,20 @@ import type {
     MessageIDLike,
     MessageLike,
 } from "../define";
-import { RequestIter } from "../requestIter";
 import {
     _EntityType,
     _entityType,
-    TotalList,
-    isArrayLike,
-    groupBy,
     generateRandomBigInt,
+    groupBy,
+    isArrayLike,
+    TotalList,
 } from "../Helpers";
+import { RequestIter } from "../requestIter";
+import { Api } from "../tl";
 import { getInputMedia, getMessageId, getPeerId, parseID } from "../Utils";
-import type { TelegramClient } from "../";
-import { utils } from "../";
 import { _parseMessageText } from "./messageParse";
-import { _getPeer } from "./users";
-import bigInt from "big-integer";
 import { _fileToMedia } from "./uploads";
+import { _getPeer } from "./users";
 
 const _MAX_CHUNK_SIZE = 100;
 
@@ -491,9 +491,9 @@ export interface SendMessageParams {
      */
     thumb?: FileLike;
     /** Whether to send the given file as a document or not. */
-    forceDocument?: false;
+    forceDocument?: boolean;
     /** Whether the existing draft should be cleared or not. */
-    clearDraft?: false;
+    clearDraft?: boolean;
     /** The matrix (list of lists), row list or button to be shown after sending the message.<br/>
      *  This parameter will only work if you have signed in as a bot. You can also pass your own ReplyMarkup here.<br/>
      *  <br/>
